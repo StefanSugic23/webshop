@@ -19,6 +19,20 @@ const products = [
   { id: 10, name: "Notebook", price: 99, emoji: "📓", category: "other" },
 ];
 
+let cart = [];
+
+try {
+  const saved = localStorage.getItem("cart");
+  cart = JSON.parse(saved) || [];
+} catch (error) {
+  console.log("Could not read saved cart");
+}
+
+function save() {
+  const text = JSON.stringify(cart);
+  localStorage.setItem("cart", text);
+};
+
 function render(){
 productsList.textContent= "";
 for (let i=0; i<products.length; i++){
@@ -34,6 +48,18 @@ for (let i=0; i<products.length; i++){
     namnElement.textContent= products[i].name
     prisElement.textContent=products[i].price
     buttonElement.textContent = "Add to cart"
+
+    buttonElement.addEventListener("click", function() {
+      const newProduct = {
+        name: products[i].name,
+        price: products[i].price
+      };
+
+      cart.push(newProduct);
+
+      render();
+      save();
+    })
 
 
 
