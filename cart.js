@@ -40,7 +40,7 @@ function save() {
 function render() {
     cartList.textContent = "";
 
-    for (item of cart) {
+    for (const item of cart) {
         const li = document.createElement("li");
         const namnElement = document.createElement("p")
         const prisElement = document.createElement("p")
@@ -56,4 +56,19 @@ function render() {
     }
 }
 
+save();
 render();
+
+
+
+
+
+function updateSum() {
+    let sum = 0;
+
+    for (const item of cart) {
+        sum = item.price + sum;
+        return sum;
+    };
+}
+
