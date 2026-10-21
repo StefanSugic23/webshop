@@ -1,10 +1,11 @@
-const header = document.querySelector("#header")
-const nav = document.querySelector("#nav")
-const main = document.querySelector("#main")
-const productsDiv = document.querySelector("#productsDiv")
-const productsList = document.querySelector("#products")
-const footer = document.querySelector("#footer")
-const myShop = document.querySelector("#myShop")
+// Elements
+const header = document.querySelector("#header");
+const nav = document.querySelector("#nav");
+const main = document.querySelector("#main");
+const productsDiv = document.querySelector("#productsDiv");
+const productsList = document.querySelector("#products");
+const footer = document.querySelector("#footer");
+const myShop = document.querySelector("#myShop");
 
 // Product Data
 const products = [
@@ -34,52 +35,52 @@ try {
 function save() {
   const text = JSON.stringify(cart);
   localStorage.setItem("cart", text);
-};
+}
 
 // Drawing the products
 function render() {
   productsList.textContent = "";
+
   for (let i = 0; i < products.length; i++) {
+    // Create elements
+    const li = document.createElement("li");
+    const emojiElement = document.createElement("p");
+    const namnElement = document.createElement("p");
+    const prisElement = document.createElement("p");
+    const buttonElement = document.createElement("button");
 
+    emojiElement.className = "emoji";
+    namnElement.className = "name";
+    prisElement.className = "price";
 
-    const li = document.createElement("li")
-    const emojiElement = document.createElement("p")
-    const namnElement = document.createElement("p")
-    const prisElement = document.createElement("p")
-    const buttonElement = document.createElement("button")
+    // Fill in content
+    emojiElement.textContent = products[i].emoji;
+    namnElement.textContent = products[i].name;
+    prisElement.textContent = products[i].price + " SEK";
+    buttonElement.textContent = "Add to cart";
 
-    emojiElement.textContent = products[i].emoji
-    namnElement.textContent = products[i].name
-    prisElement.textContent = products[i].price
-    buttonElement.textContent = "Add to cart"
-
+    // Add to cart on click
     buttonElement.addEventListener("click", function () {
       const newProduct = {
         name: products[i].name,
-        price: products[i].price
+        price: products[i].price,
       };
 
       cart.push(newProduct);
-
-
-
       render();
       save();
-    })
+    });
 
+    // Put it on the page
+    li.appendChild(emojiElement);
+    li.appendChild(namnElement);
+    li.appendChild(prisElement);
+    li.appendChild(buttonElement);
 
+    productsList.appendChild(li);
 
-    li.appendChild(emojiElement)
-    li.appendChild(namnElement)
-    li.appendChild(prisElement)
-    li.appendChild(buttonElement)
-
-    productsList.appendChild(li)
-
-    console.log(productsList)
+    console.log(productsList);
   }
 }
+
 render();
-
-
-
