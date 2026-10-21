@@ -6,6 +6,7 @@ const productsList = document.querySelector("#products")
 const footer = document.querySelector("#footer")
 const myShop = document.querySelector("#myShop")
 
+// Product Data
 const products = [
   { id: 1, name: "Headphones", price: 499, emoji: "🎧", category: "audio" },
   { id: 2, name: "Keyboard", price: 799, emoji: "⌨️", category: "computer" },
@@ -19,6 +20,7 @@ const products = [
   { id: 10, name: "Notebook", price: 99, emoji: "📓", category: "other" },
 ];
 
+// Loading saved cart
 let cart = [];
 
 try {
@@ -28,16 +30,18 @@ try {
   console.log("Could not read saved cart");
 }
 
+// Saving the cart
 function save() {
   const text = JSON.stringify(cart);
   localStorage.setItem("cart", text);
 };
 
-function render(){
-productsList.textContent= "";
-for (let i=0; i<products.length; i++){
+// Drawing the products
+function render() {
+  productsList.textContent = "";
+  for (let i = 0; i < products.length; i++) {
 
-    
+
     const li = document.createElement("li")
     const emojiElement = document.createElement("p")
     const namnElement = document.createElement("p")
@@ -45,17 +49,19 @@ for (let i=0; i<products.length; i++){
     const buttonElement = document.createElement("button")
 
     emojiElement.textContent = products[i].emoji
-    namnElement.textContent= products[i].name
-    prisElement.textContent=products[i].price
+    namnElement.textContent = products[i].name
+    prisElement.textContent = products[i].price
     buttonElement.textContent = "Add to cart"
 
-    buttonElement.addEventListener("click", function() {
+    buttonElement.addEventListener("click", function () {
       const newProduct = {
         name: products[i].name,
         price: products[i].price
       };
 
       cart.push(newProduct);
+
+
 
       render();
       save();
@@ -71,7 +77,7 @@ for (let i=0; i<products.length; i++){
     productsList.appendChild(li)
 
     console.log(productsList)
-}
+  }
 }
 render();
 
