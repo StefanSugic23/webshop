@@ -13,16 +13,11 @@
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     gap: 20px
-}
-
-#productsDiv {
-    background-color: blanchedalmond;
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 20px
-
+    
     
 }
+
+
 
 li {
     border: 2px solid black;
