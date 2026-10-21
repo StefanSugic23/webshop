@@ -1,19 +1,20 @@
 const cartList = document.querySelector("#cartList");
+const sumElement = document.querySelector("#sum");
 
 let cart = [];
 
 try {
-    const saved = localStorage.getItem("cart");
-    cart = JSON.parse(saved) || [];
+  const saved = localStorage.getItem("cart");
+  cart = JSON.parse(saved) || [];
 } catch (error) {
-    console.log("Could not read saved cart");
+  console.log("Could not read saved cart");
 }
 
 console.log(cart);
 
 function save() {
-    const text = JSON.stringify(cart);
-    localStorage.setItem("cart", text);
+  const text = JSON.stringify(cart);
+  localStorage.setItem("cart", text);
 };
 
 // function render() {
@@ -38,37 +39,37 @@ function save() {
 // render();
 
 function render() {
-    cartList.textContent = "";
+  cartList.textContent = "";
+  for (const item of cart) {
+    const li = document.createElement("li");
+    const namnElement = document.createElement("p")
+    const prisElement = document.createElement("p")
 
-    for (const item of cart) {
-        const li = document.createElement("li");
-        const namnElement = document.createElement("p")
-        const prisElement = document.createElement("p")
+    namnElement.textContent = item.name;
+    prisElement.textContent = `${item.price} kr`;
 
-        namnElement.textContent = item.name;
-        prisElement.textContent = item.price;
 
-        li.appendChild(namnElement);
-        li.appendChild(prisElement);
+    li.appendChild(namnElement);
+    li.appendChild(prisElement);
 
-        cartList.appendChild(li);
-        console.log(cartList)
-    }
+    cartList.appendChild(li);
+    console.log(cartList)
+  }
+  sumElement.textContent = `Total: ${updateSum()} kr`;
 }
 
 save();
 render();
 
 
-
-
-
 function updateSum() {
-    let sum = 0;
-
-    for (const item of cart) {
-        sum = item.price + sum;
-        return sum;
-    };
+  let sum = 0;
+  for (const item of cart) {
+    sum = item.price + sum;
+  };
+  return sum; // Moved outside of the for loop 
 }
+
+
+
 
