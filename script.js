@@ -53,14 +53,30 @@ function render() {
     namnElement.className = "name";
     prisElement.className = "price";
 
+<<<<<<< HEAD
     // Fill in content
     emojiElement.textContent = products[i].emoji;
     namnElement.textContent = products[i].name;
     prisElement.textContent = products[i].price + " SEK";
     buttonElement.textContent = "Add to cart";
+=======
+    const li = document.createElement("li")
+    const emojiElement = document.createElement("p")
+    const namnElement = document.createElement("p")
+    const prisElement = document.createElement("p")
+    const buttonElement = document.createElement("button")
+
+    emojiElement.textContent = products[i].emoji
+    namnElement.textContent = products[i].name
+    prisElement.textContent = products[i].price + " kr"
+    buttonElement.textContent = "Add to cart"
+    emojiElement.classList.add("emoji")
+    buttonElement.classList.add("buttonAdd")
+>>>>>>> eb526b8 (Added functionality,css and modify webshop)
 
     // Add to cart on click
     buttonElement.addEventListener("click", function () {
+<<<<<<< HEAD
       const newProduct = {
         name: products[i].name,
         price: products[i].price,
@@ -70,6 +86,35 @@ function render() {
       render();
       save();
     });
+=======
+
+  const product = products[i];
+
+  let found = false;
+
+  for (let item of cart) {
+    if (item.name === product.name) {
+      item.quantity++;
+      found = true;
+      break;
+    }
+  }
+
+  if (found === false) {
+    const newProduct = {
+      name: product.name,
+      price: product.price,
+      quantity: 1,
+      category: product.category
+    };
+
+    cart.push(newProduct);
+  }
+
+  render();
+  save();
+});
+>>>>>>> eb526b8 (Added functionality,css and modify webshop)
 
     // Put it on the page
     li.appendChild(emojiElement);
@@ -79,8 +124,29 @@ function render() {
 
     productsList.appendChild(li);
 
+<<<<<<< HEAD
     console.log(productsList);
+=======
+    li.appendChild(emojiElement)
+    li.appendChild(namnElement)
+    li.appendChild(prisElement)
+    li.appendChild(buttonElement)
+
+    productsList.appendChild(li)
+
+    
+
+
+>>>>>>> eb526b8 (Added functionality,css and modify webshop)
   }
 }
 
 render();
+<<<<<<< HEAD
+=======
+
+
+
+
+
+>>>>>>> eb526b8 (Added functionality,css and modify webshop)

@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 :root {
   --bg: #ffffff;
   --surface: #ffffff;
@@ -30,6 +31,11 @@ a {
   text-decoration: none;
 }
 
+=======
+* {
+  box-sizing: border-box;
+}
+>>>>>>> eb526b8 (Added functionality,css and modify webshop)
 #header {
   display: flex;
   justify-content: space-between;
@@ -203,5 +209,78 @@ a {
 @media (max-width: 600px) {
   #products {
     grid-template-columns: repeat(2, 1fr);
+<<<<<<< HEAD
   }
+=======
+    gap: 20px;
+    padding: 8px;
+    
+       
+}
+
+
+
+li {
+    border: 2px solid black;
+    border-radius: 5px;
+    text-align: center;
+    font-size: large;
+    background-color: white;
+    
+    
+    
+>>>>>>> eb526b8 (Added functionality,css and modify webshop)
+}
+
+body {
+  margin: 0;
+  padding: 30px;
+  font-family: "Segoe UI", Arial, sans-serif;
+  background-color: lightcyan;
+  line-height: 1.6;
+}
+
+#cartList {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    padding: 0;    
+}
+
+.liCart{
+    color: red;
+    display: flex;
+    justify-content: space-between;
+}
+
+.emoji{
+    font-size: 50px;
+}
+.buttonAdd {
+    
+    background-color: blue;
+    color: white;
+    border-radius: 8px;
+    padding: 10px;
+    margin-left: 20px;
+    margin-bottom: 20px;
+    margin-right: 20px;
+}
+
+button {
+  background-color: blue;
+  color: white;
+  transition: background-color 0.3s ease;
+  border-radius: 8px;
+    
+}
+
+
+button:hover {
+  background-color: green;
+}
+
+.transition {
+    transition: 1.1s ease;
 }
